@@ -15,3 +15,10 @@ $ npm install
 # development
 $ npm run start
 ```
+
+## Tech
+```bash
+Nest
+Rest API
+SQL DB
+```
