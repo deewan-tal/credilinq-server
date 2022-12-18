@@ -1,8 +1,7 @@
-import { Body, Controller, Get, HttpStatus, Post, Res, UploadedFile, UseInterceptors } from '@nestjs/common';
-import { UserService } from '../services/user.service';
-import { IApplicationForm } from '../interfaces/application.request';
+import { Body, Controller, Get, Post, Res, UploadedFile, UseInterceptors } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { Express } from 'express'
+import { IApplicationForm } from '../interfaces/application.request';
+import { UserService } from '../services/user.service';
 
 @Controller('/form')
 export class ApplicationController {
@@ -13,23 +12,20 @@ export class ApplicationController {
   @Post('/submit')
   async saveApplication(@Res() response, @Body() application: IApplicationForm) {
     const newUser = await this.userService.processApplication(application);
-    return response.status(HttpStatus.CREATED).json({
-      newUser
-    })
+    return newUser;
   }
 
   @Post('/upload')
-  @UseInterceptors(FileInterceptor('files'))
-  async uploadDocument(@UploadedFile() file: Express.Multer.File) {
+  @UseInterceptors(FileInterceptor('file',{
+      dest: './uploads'
+    }))
+  async uploadDocument(@UploadedFile() file:Express.Multer.File) {
     console.log(file);
-    return {
-      filepath: file.path,
-      filename: file.originalname
-    }
+    return file;
   }
 
-  @Get('/hello')
+  @Get('/test')
   getHello(): string {
-    return 'application form is cool!';
+    return 'application form is working!';
   }
 }

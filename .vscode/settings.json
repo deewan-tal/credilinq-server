@@ -1,0 +1,27 @@
+{
+  "editor.formatOnSave": true,
+  "[javascript]": {
+    "editor.formatOnSave": true
+  },
+  "[typescript]": {
+    "editor.formatOnSave": true
+  },
+  "[plaintext]": {
+    "editor.formatOnSave": false
+  },
+  "files.associations": {
+    "**/messages/**/*.ts": "plaintext"
+  },
+  "editor.formatOnPaste": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.fixAll.eslint": true,
+    "source.organizeImports": true
+  },
+  "eslint.validate": ["javascript"],
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "prettier.requireConfig": true,
+  "javascript.format.insertSpaceAfterConstructor": true,
+  "typescript.format.enable": false,
+  "javascript.format.enable": false
+}
